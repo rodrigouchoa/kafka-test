@@ -1,0 +1,25 @@
+kafka: 
+  server: ${KAFKA_TEST_SERVER:localhost:9093}
+  security-protocol: ${KAFKA_TEST_SECURITY_PROTOCOL:SSL}
+  topic: ${KAFKA_TEST_PERSON_TOPIC:kafka-test-person-topic}
+  producer: 
+    add-type-info-headers: ${KAFKA_TEST_ADD_TYPE_INFO_HEADERS:false}
+    buffer-memory: ${KAFKA_TEST_BUFFER_MEMORY:67108864}
+  consumer:
+    group-id: ${CONSUMER_GROUP_ID:kafka-test-consumer-group}
+    auto-offset-reset: ${CONSUMER_AUTO_OFFSET_RESET:earliest}
+ 
+---
+spring:
+  profiles: test
+kafka: 
+  server: ${spring.embedded.kafka.brokers}
+  security-protocol: ${KAFKA_TEST_SECURITY_PROTOCOL:PLAINTEXT}
+  topic: ${KAFKA_TEST_PERSON_TOPIC:kafka-test-person-topic}
+  producer: 
+    add-type-info-headers: ${KAFKA_TEST_ADD_TYPE_INFO_HEADERS:false}
+    buffer-memory: ${KAFKA_TEST_BUFFER_MEMORY:67108864}
+  consumer:
+    group-id: ${CONSUMER_GROUP_ID:kafka-test-consumer-group}
+    auto-offset-reset: ${CONSUMER_AUTO_OFFSET_RESET:earliest}
+  
