@@ -37,9 +37,9 @@ public class ConsumerFactoryConfig {
     }
 	
     @Bean
-	public ConsumerFactory<Long, Person> consumerFactory() {
-		return new DefaultKafkaConsumerFactory<>(consumerProps(), new LongDeserializer(), new JsonDeserializer<>(Person.class));
-	}
+    public ConsumerFactory<Long, Person> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerProps(), new LongDeserializer(), new JsonDeserializer<>(Person.class));
+    }
 	
     //this Bean will be used by the @KafkaListener annotation on the consumer
     @Bean
