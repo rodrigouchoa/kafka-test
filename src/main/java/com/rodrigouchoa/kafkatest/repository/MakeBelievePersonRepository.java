@@ -18,30 +18,28 @@ import com.rodrigouchoa.kafkatest.domain.Person;
  */
 @Repository
 public class MakeBelievePersonRepository implements PersonRepository {
-	Map<Long, Person> inMemoryStorage;
-	
-	
-	public MakeBelievePersonRepository() {
-		inMemoryStorage = Collections.synchronizedMap(new HashMap<Long, Person>());
-	}
+    Map<Long, Person> inMemoryStorage;
 
-	
-	@Override
-	public List<Person> findAll() { 
-		List<Person> list = new ArrayList<>();
-		list.add(new Person(1L, "Mary"));
-		list.add(new Person(2L, "John"));
-		return list;
-	}
+    public MakeBelievePersonRepository() {
+        inMemoryStorage = Collections.synchronizedMap(new HashMap<Long, Person>());
+    }
 
-	@Override
-	public void save(List<Person> persons) {
-		persons.forEach(person -> inMemoryStorage.put(person.getId(), person));
-	}
+    @Override
+    public List<Person> findAll() {
+        List<Person> list = new ArrayList<>();
+        list.add(new Person(1L, "Mary"));
+        list.add(new Person(2L, "John"));
+        return list;
+    }
 
-	@Override
-	public Map<Long, Person> getInMemoryStorage() {
-		return Collections.unmodifiableMap(this.inMemoryStorage);
-	}
+    @Override
+    public void save(List<Person> persons) {
+        persons.forEach(person -> inMemoryStorage.put(person.getId(), person));
+    }
+
+    @Override
+    public Map<Long, Person> getInMemoryStorage() {
+        return Collections.unmodifiableMap(this.inMemoryStorage);
+    }
 
 }

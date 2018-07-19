@@ -20,13 +20,13 @@ import com.rodrigouchoa.kafkatest.domain.Person;
 @Configuration
 public class ProducerFactoryConfig {
 	
-	@Autowired
-	private ApplicationProps props;
+    @Autowired
+    private ApplicationProps props;
 	
 	
-	@Bean
-	public ProducerFactory<Long, Person> producerFactory() {
-		Map<String, Object> configProps = new HashMap<>();
+    @Bean
+    public ProducerFactory<Long, Person> producerFactory() {
+        Map<String, Object> configProps = new HashMap<>();
 
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
@@ -42,9 +42,9 @@ public class ProducerFactoryConfig {
         configProps.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, props.getSecurityProtocol());
 
         return new DefaultKafkaProducerFactory<>(configProps);
-	}
+    }
 	
-	@Bean
+    @Bean
     public KafkaTemplate<Long, Person> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }

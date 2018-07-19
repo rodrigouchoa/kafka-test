@@ -12,11 +12,11 @@ import com.rodrigouchoa.kafkatest.domain.Person;
  *
  */
 public interface PersonRepository {
-	
-	public List<Person>	findAll(); //will be used by Producer
-	
-	public void save(List<Person> persons); //used by Consumer
-	
-	public Map<Long, Person> getInMemoryStorage();
+
+    public List<Person> findAll(); // will be used by Producer
+
+    public void save(List<Person> persons); // used by Consumer
+
+    public Map<Long, Person> getInMemoryStorage();
 
 }

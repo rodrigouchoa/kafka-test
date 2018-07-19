@@ -12,18 +12,18 @@ import com.rodrigouchoa.kafkatest.domain.Person;
  * @author rodrigo.uchoa at gmail.com
  *
  */
-//ps: we can mock this whilst we test the producer
+// ps: we can mock this whilst we test the producer
 @Component
-public class ProducerCallback implements ListenableFutureCallback<SendResult<Long, Person>> { 
-	
-	@Override
-	public void onSuccess(SendResult<Long, Person> result) {
-		//do something here
-		
-	}
+public class ProducerCallback implements ListenableFutureCallback<SendResult<Long, Person>> {
 
-	@Override
-	public void onFailure(Throwable ex) {
-		//do something here (at least log the error)
-	}
+    @Override
+    public void onSuccess(SendResult<Long, Person> result) {
+        // do something here
+
+    }
+
+    @Override
+    public void onFailure(Throwable ex) {
+        // do something here (at least log the error)
+    }
 }

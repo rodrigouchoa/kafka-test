@@ -12,14 +12,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class ApplicationPropsTest {
-	
-	@Autowired
-	private ApplicationProps props;
-	
-	
-	@Test
-	public void shouldReadProperty() {
-		assertEquals("localhost:9093", props.getServer());
-		assertEquals(false, props.getProducer().getAddTypeInfoHeaders());
-	}
+
+    @Autowired
+    private ApplicationProps props;
+
+    @Test
+    public void shouldReadProperty() {
+        assertEquals("localhost:9093", props.getServer());
+        assertEquals(false, props.getProducer().getAddTypeInfoHeaders());
+    }
 }

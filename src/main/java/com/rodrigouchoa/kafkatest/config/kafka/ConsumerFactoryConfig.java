@@ -22,11 +22,11 @@ import com.rodrigouchoa.kafkatest.domain.Person;
 @EnableKafka
 public class ConsumerFactoryConfig {
 	
-	@Autowired
-	private ApplicationProps props;
+    @Autowired
+    private ApplicationProps props;
 	
 	
-	@Bean
+    @Bean
     public Map<String, Object> consumerProps() {
         Map<String, Object> configProps = new HashMap<String, Object>();
         configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, props.getServer());
@@ -36,13 +36,13 @@ public class ConsumerFactoryConfig {
         return configProps;
     }
 	
-	@Bean
+    @Bean
 	public ConsumerFactory<Long, Person> consumerFactory() {
 		return new DefaultKafkaConsumerFactory<>(consumerProps(), new LongDeserializer(), new JsonDeserializer<>(Person.class));
 	}
 	
-	//this Bean will be used by the @KafkaListener annotation on the consumer
-	@Bean
+    //this Bean will be used by the @KafkaListener annotation on the consumer
+    @Bean
     public ConcurrentKafkaListenerContainerFactory<Long, Person> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<Long, Person> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setBatchListener(true); 
